@@ -12,19 +12,19 @@ int main() {
     cout << "Masukkan kode parkir digital (10 digit): "; cin >> kode;
     cout << "Masukkan jam keluar (format HHMM): "; cin >> keluar;
 
-    int biaya(0), durasi((stoi(keluar.substr(0, 2)) - stoi(kode.substr(2, 2))) + ceil((stoi(keluar.substr(2)) - stoi(kode.substr(4, 2)))/60.f));
+    int biaya(0), durasi(ceil((stoi(keluar.substr(0, 2)) * 60 + stoi(keluar.substr(2)) - stoi(kode.substr(2, 2)) * 60 - stoi(kode.substr(4, 2)))/60.f)) ;
 
     cout << "\n--- Ringkasan Parkir ---";
     cout << "\nJenis kendaraan: ";
 
-    switch (kode[0]) {
-        case '1' : cout << "Mobil"; 
+    switch (stoi(kode.substr(0, 2))) {
+        case 10 : cout << "Mobil"; 
                    biaya = durasi * 3000 + 2000; 
                    break;
-        case '2' : cout << "Motor"; 
+        case 20 : cout << "Motor"; 
                    biaya = durasi * 2000 + 1000; 
                    break;
-        case '3' : cout << "Bus";
+        case 30 : cout << "Bus";
                    biaya = durasi * 7000 + 3000; 
                    break;
     }
@@ -46,8 +46,8 @@ Logika
 - Kode menerima input (kode,keluar)
 - Deklarasi sekaligus pengisian variabel durasi dengan tipe data float
 - waktu akhir-waktu awal
-- 60 menit = 1 jam, makanya yg menit dibagi 60
-- Ceil di menit karena pengendara yg memasuki waktu jam baru teritung full (agar ga rugi)
+- 60 menit = 1 jam, makanya yg jam dikali 60
+- Ceil karena pengendara yg memasuki waktu jam baru teritung full (agar ga rugi)
 - menggunakan switch case di digit pertama karena di testcase sudah safe (digit ke 2 jadi ga penting)
 - output jam masuk dan keluar menggunakan substr agar bisa langsung mengambil 2 digit (jika "09" tetap "09" ga jadi "9")
 */

@@ -48,6 +48,6 @@ Logika
 - waktu akhir-waktu awal
 - 60 menit = 1 jam, makanya yg jam dikali 60
 - Ceil karena pengendara yg memasuki waktu jam baru teritung full (agar ga rugi)
-- menggunakan switch case di digit pertama karena di testcase sudah safe (digit ke 2 jadi ga penting)
+- menggunakan switch case dan diubah ke int karena switch case gan bisa string
 - output jam masuk dan keluar menggunakan substr agar bisa langsung mengambil 2 digit (jika "09" tetap "09" ga jadi "9")
 */
